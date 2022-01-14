@@ -372,7 +372,9 @@ def evaluate(labels, predictions):
 
 if __name__ == "__main__":
     '''
-    Storing the text documents and gold-standard labels as a list of strings
+    Storing the text documents and gold-standard labels as a list of strings in documents and labels
+    Running the model with the said docuemtns and comparig the extracted output with the labels.
+    Displaying the output in the form of a pandas df
     '''
     documents, labels = [], []
 
