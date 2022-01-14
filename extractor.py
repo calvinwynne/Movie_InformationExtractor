@@ -7,9 +7,10 @@ nltk.download('all', quiet=True)
 
 def ie_preprocess(document):
     '''
-    This funciton returns a list of sentences tagged with part-of-speech tags for a given document. Part-of-speech (POS)
-    tagging is a popular Natural Language Processing process which refers to categorizing words in a text (corpus)
-    in correspondence with a particular part of speech, depending on the definition of the word and its context
+    Part-of-speech (POS) tagging is a popular Natural Language Processing process which refers to categorizing
+    words in a text (corpus) in correspondence with a particular part of speech, depending on the definition of
+    the word and its context. This funciton returns a list of sentences tagged with part-of-speech tags for a
+    given document.
 
     Arguments:
     ----------
@@ -23,11 +24,16 @@ def ie_preprocess(document):
 
 
 def find_named_entities(tagged_document, binary=False):
-    '''Return a list of all the named entities in the given tagged document.'''
+    '''
+    Return a list of all the named entities in the given tagged document. This is done using the NLTKS's builtin Named
+    entity chunking function called the ne_chunk. Classes and interfaces for identifying non-overlapping linguistic
+    groups (such as base noun phrases) in unrestricted text. This task is called chunk parsing or chunking, and the
+    identified groups are called “chunks”. The chunked text is represented using a shallow tree called a chunk
+    structure.
+    '''
     named_entities, entities_tree = [], []
     for each_sentence in tagged_document:
         tree = nltk.ne_chunk(each_sentence, binary)
-
         for each_tree in tree.subtrees():
             if each_tree.label() == "NE":
                 each_entity = ""
@@ -35,12 +41,10 @@ def find_named_entities(tagged_document, binary=False):
                     each_entity += each_leaf[0] + " "
                 named_entities.append(each_entity.strip())
         entities_tree.append(tree)
-
     return named_entities, entities_tree
 
 
 def relation_extractor1(document, verbose=False):
-
     '''
     ++++++++++++++++++++++++++++++++++++++++++ Approach 1 ++++++++++++++++++++++++++++++++++++++++++++
 
@@ -106,8 +110,6 @@ def relation_extractor1(document, verbose=False):
 
 
 def relation_extractor2(doc, required_verbs, best_match=True, verbose=False):
-
-
     '''
     ++++++++++++++++++++++++++++++++++++++++++ Approach 2 ++++++++++++++++++++++++++++++++++++++++++++
 
