@@ -25,11 +25,23 @@ def ie_preprocess(document):
 
 def find_named_entities(tagged_document, binary=False):
     '''
-    Return a list of all the named entities in the given tagged document. This is done using the NLTKS's builtin Named
-    entity chunking function called the ne_chunk. Classes and interfaces for identifying non-overlapping linguistic
-    groups (such as base noun phrases) in unrestricted text. This task is called chunk parsing or chunking, and the
-    identified groups are called “chunks”. The chunked text is represented using a shallow tree called a chunk
-    structure.
+    Return a list of all the named entities in the given tagged document. Recognizing named entity is a specific kind
+    of chunk extraction that uses entity tags along with chunk tags. Common entity tags include PERSON, LOCATION and
+    ORGANIZATION. POS tagged sentences are parsed into chunk trees with normal chunking but the trees labels can be
+    entity tags in place of chunk phrase tags. NLTK has already a pre-trained named entity chunker which can be used
+    using ne_chunk() method in the nltk.chunk module. This method chunks a single sentence into a Tree.
+
+    Arguments:
+    ----------
+    tagged_document : String  Ex: "This is a sample document"
+                      Input document that requires realtion extraction
+
+    binary          : Boolean Ex: True/False
+                      Specifies if the recognized entity is either POL or just binary
+    RETURN:
+    -------
+    named_entities  : A list of lists that contain all the chunked named entities_tree
+    entities_tree   : A list of list that contains a tree for each sentence
     '''
     named_entities, entities_tree = [], []
     for each_sentence in tagged_document:
