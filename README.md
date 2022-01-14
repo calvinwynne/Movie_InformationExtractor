@@ -11,6 +11,6 @@ as shown below:
 
 Direc : Directed, Director, Direct (minght not be the intended value)
 
-<img src="https://github.com/calvinwynne/Movie_InformationExtractor/blob/develop/movies/images/image1.gif" width="350">
+<img src="https://github.com/calvinwynne/Movie_InformationExtractor/blob/develop/movies/images/image1.gif" width="550">
 
 The program can now either return the best candidate it finds based on the distance metric or all potential candidates, depending on the user's requirements.
